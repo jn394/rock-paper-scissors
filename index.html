@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors Part 2
+    </title>
+</head>
+
+<body>
+
+    <div id="game">
+        <h1 id="header"></h1>
+        <p id="text1"></p>
+        <p id="text2"></p>
+        <p id="text3"></p>
+        <p id="text4"></p>
+    </div>
+
+    <script type="text/javascript">
+
+        // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+        var computerChoices = ["r", "p", "s"];
+        var playerScore = 0;
+        var compScore = 0;
+        var resutls = "";
+        var score = "";
+
+
+        // This function is run whenever the user presses a key.
+        document.onkeyup = function (event) {
+
+            // Determines which key was pressed.
+            var userGuess = event.key;
+
+            // Randomly chooses a choice from the options array. This is the Computer's guess.
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+            //This is the if/else statments//
+
+            //Player Wins//
+            if ((userGuess == "r" && computerGuess == "s") || (userGuess == "s" && computerGuess == "p") || (userGuess == "p" && computerGuess == "r")) {
+                playerScore += 1;
+                results = "Player Wins";
+            }
+
+            //Comp Wins// 
+            else if ((userGuess == "r" && computerGuess == "p") || (userGuess == "s" && computerGuess == "r") || (userGuess == "p" && computerGuess == "s")) {
+                compScore += 1;
+                results = "Comp Wins";
+            }
+
+            //Tie Game//
+            else if ((userGuess == "r" && computerGuess == "r") || (userGuess == "s" && computerGuess == "s") || (userGuess == "p" && computerGuess == "p")) {
+                results = "Nothing Happens";
+            }
+
+            //Nothing Happens//
+            else {
+                results = "Nothing Happens";
+            };
+            document.getElementById("header").innerHTML = "Rock/Paper/Scissors";
+            document.getElementById("text1").innerHTML = "Players Move: " + userGuess;
+            document.getElementById("text2").innerHTML = "Computers Move: " + computerGuess;
+            document.getElementById("text3").innerHTML = "Results: " + results;
+            document.getElementById("text4").innerHTML = "Score: " + playerScore + "-" + compScore;
+        };
+
+
+
+    </script>
+
+</body>
+
+</html>
